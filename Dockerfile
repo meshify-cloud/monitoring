@@ -20,9 +20,11 @@ FROM alpine:3.19
 # Instalar SQLite y otras dependencias necesarias
 RUN apk add --no-cache sqlite-libs docker-cli
 
+WORKDIR /app
+
 # Copiar el binario compilado y el archivo monitor.go
-COPY --from=builder /main ./main
-COPY --from=builder /main.go ./monitor.go
+COPY --from=builder /app/main ./main
+COPY --from=builder /app/main.go ./monitor.go
 
 # COPY --from=builder /app/apps/golang/.env ./.env
 
