@@ -15,6 +15,7 @@ Create a `.env` file in the root of the project with the following content:
 ```shell
 METRICS_CONFIG='{
   "server": {
+    "bandwidth": 200,
     "refreshRate": 25,
     "port": 3001,
     "type": "Remote | Dokploy",
