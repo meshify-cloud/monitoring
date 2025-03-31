@@ -4,6 +4,10 @@ FROM golang:1.21-alpine3.19 AS builder
 # Instalar dependencias necesarias
 RUN apk add --no-cache gcc musl-dev sqlite-dev
 
+WORKDIR /app
+
+COPY . .
+
 # Descargar dependencias
 RUN go mod download
 
@@ -15,8 +19,6 @@ FROM alpine:3.19
 
 # Instalar SQLite y otras dependencias necesarias
 RUN apk add --no-cache sqlite-libs docker-cli
-
-WORKDIR /app
 
 # Copiar el binario compilado y el archivo monitor.go
 COPY --from=builder /main ./main
