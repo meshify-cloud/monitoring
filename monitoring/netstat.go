@@ -33,7 +33,7 @@ func NewNetworkMonitor() *NetworkMonitor {
 // sample 采样网络统计数据
 func (nm *NetworkMonitor) sample() (NetworkStats, error) {
 	// 获取当前网络IO计数器
-	counters, err := net.IOCounters(false)
+	counters, err := net.IOCounters(true)
 	if err != nil {
 		return NetworkStats{}, fmt.Errorf("failed to get network IO counters: %v", err)
 	}
